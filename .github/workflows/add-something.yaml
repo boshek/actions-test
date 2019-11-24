@@ -1,0 +1,17 @@
+on: [push, pull_request]
+
+name: Add a file
+
+jobs:
+  add-file:
+    name: export csv
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@v1
+      - name: Create csv
+        run: Rscript -e "write.csv(iris, 'iris.csv')"
+      - name: Commit results
+        run: |
+          git commit iris.csv -m 'add csv'
+          git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:master
