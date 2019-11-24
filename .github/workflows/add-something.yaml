@@ -13,5 +13,6 @@ jobs:
         run: Rscript -e "write.csv(iris, 'iris.csv')"
       - name: Commit results
         run: |
-          git commit iris.csv -m 'add csv'
+          git add iris.csv
+          git commit -m 'add csv'
           git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:master
