@@ -15,4 +15,4 @@ jobs:
         run: |
           git add iris2.csv
           git commit -m 'add csv'
-          git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:master
+          git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git
